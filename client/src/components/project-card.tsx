@@ -11,46 +11,51 @@ interface ProjectProps {
 }
 
 export function ProjectCard({ project, index }: { project: ProjectProps; index: number }) {
+  // Use index to create an asymmetrical layout effect
+  const isEven = index % 2 === 0;
+
   return (
     <Link href={`/project/${project.id}`}>
       <motion.div
-        className="group cursor-pointer relative"
+        className={`group cursor-pointer relative ${isEven ? 'md:mt-0' : 'md:mt-32'}`}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, delay: index * 0.1, type: "spring", stiffness: 50 }}
+        transition={{ duration: 0.8, delay: index * 0.1, ease: [0.215, 0.61, 0.355, 1] }}
       >
-        <div 
-          className="aspect-[4/3] w-full overflow-hidden rounded-lg bg-secondary mb-6 relative"
-        >
-          {/* Background color overlay that appears on hover */}
+        <div className="relative overflow-hidden rounded-2xl bg-secondary shadow-sm transition-all duration-500 group-hover:shadow-2xl">
           <div 
-            className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-10"
+            className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"
             style={{ backgroundColor: project.color }}
           />
           
           <motion.img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            className="w-full aspect-[4/5] md:aspect-[3/4] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
-          
-          {/* Floating 'View' button that appears on hover */}
-          <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-20">
-            <div className="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg">
-              <ArrowUpRight className="w-5 h-5 text-black" />
-            </div>
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 flex flex-col justify-end p-8">
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              whileHover={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              className="flex justify-between items-center text-white"
+            >
+              <div>
+                <p className="text-sm font-medium opacity-80 mb-1">{project.category}</p>
+                <h3 className="text-3xl font-display font-bold leading-tight">{project.title}</h3>
+              </div>
+              <div className="bg-white text-black p-3 rounded-full">
+                <ArrowUpRight className="w-6 h-6" />
+              </div>
+            </motion.div>
           </div>
         </div>
         
-        <div className="flex justify-between items-start">
-          <div>
-            <h3 className="text-2xl font-display font-medium mb-1 group-hover:underline decoration-1 underline-offset-4 decoration-muted-foreground/50">
-              {project.title}
-            </h3>
-            <p className="text-muted-foreground text-lg">{project.category}</p>
-          </div>
-          {/* Optional Year or Tag could go here */}
+        <div className="mt-6 flex justify-between items-center md:hidden">
+           <h3 className="text-xl font-display font-medium">{project.title}</h3>
+           <span className="text-sm text-muted-foreground">{project.category}</span>
         </div>
       </motion.div>
     </Link>
