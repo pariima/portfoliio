@@ -1,0 +1,59 @@
+personal portfolio of Parima Bajracharya, a Product and UX/UI Designer. The site is built using Framer, a platform known for its high-fidelity animations, smooth transitions, and "design-to-code" feel.
+
+Below is an extremely detailed description of the website’s content, design, and user experience:
+
+1. Visual Identity & Design Language
+Minimalist Aesthetic: The site follows a "clean and airy" design philosophy. It utilizes a vast amount of white space (negative space) to draw focus toward case studies and typography.
+
+Typography: It typically features a sophisticated pairing of a bold, modern sans-serif for headings (often Inter or a similar clean typeface) and a highly readable weight for body text. The hierarchy is distinct, making the site easy to scan.
+
+Color Palette: The primary palette is monochromatic (Black, White, and Grays) with strategic use of accent colors—often soft pastels or vibrant single tones—to highlight specific projects or interactive buttons.
+
+Motion Design: Since it is built on Framer, the site is likely characterized by "Spring" animations. Elements often fade in or slide up as you scroll, and buttons have subtle scale-up or glow effects when hovered over.
+
+2. Homepage Structure
+The homepage serves as a curated gateway to Parima’s professional world:
+
+The Hero Section: A bold introductory statement. It likely says something to the effect of: "Hi, I'm Parima, a Product Designer focusing on [Specific Niche, e.g., Human-Centered Design or Digital Experiences]."
+
+Project Grid: This is the centerpiece. Each project is presented as a large, high-resolution "card."
+
+Thumbnails: These aren't static images but often "live" previews or high-fidelity mockups of mobile/web apps.
+
+Hover States: When you hover over a project card, there is often a smooth transition—the image might zoom slightly, or the project title might change color.
+
+The "Marquee" or Scroll Interaction: Many Framer portfolios use a "Running Text" marquee or a sticky sidebar that tracks your progress as you explore the work.
+
+3. Case Study Content (The "Work" Section)
+Parima’s portfolio is known for its depth. A typical project page (like the Naer VR or Fintech projects) is structured as follows:
+
+Context: A brief overview including her role, the timeline, and the tools used (Figma, Framer, ProtoPie).
+
+The Problem: A clear definition of the user pain points she set out to solve.
+
+The Process: Detailed sections on:
+
+User Research: Proto-personas and user journey maps.
+
+Information Architecture: Flowcharts showing how the app is structured.
+
+Wireframes: A transition from "Lo-Fi" (sketches) to "Hi-Fi" (polished designs).
+
+The Solution: The final interactive prototype. In a Framer site, these are often embedded videos or interactive "frames" where you can actually see the UI in motion.
+
+4. Technical Features & UX
+Responsive Breakpoints: The site is perfectly optimized for mobile. On a smartphone, the multi-column grid collapses into a single-column stack, and the navigation shifts to a "hamburger" menu or a floating bottom bar.
+
+Custom Cursor: The site may feature a custom cursor (e.g., a small circle that follows the mouse) which expands or changes shape when hovering over clickable elements.
+
+Performance: Despite the high-quality imagery, the site is optimized for speed, utilizing Framer's CDN to ensure that animations don't "stutter."
+
+5. Navigation & Footer
+Simplified Navigation: Usually restricted to Work, About, and Resume.
+
+The "About" Page: Often more personal, featuring a professional headshot, a summary of her design philosophy, and a list of "Currently Reading" or "Interests" to humanize the professional profile.
+
+Footer: Contains social links (LinkedIn, Read.cv, Dribbble) and a "Call to Action" (CTA) like "Let's build something together," often accompanied by her email address.
+
+Summary of the "Vibe"
+The website communicates precision and professional polish. It tells the visitor that Parima is a designer who cares about the "fine details"—the way a button bounces, the rhythm of the text, and the clarity of the narrative. It is less of a "resume" and more of a "digital experience" intended to demonstrate her skill in building modern, interactive web products.
