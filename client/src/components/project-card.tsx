@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface ProjectProps {
   id: string;
@@ -11,53 +11,90 @@ interface ProjectProps {
 }
 
 export function ProjectCard({ project, index }: { project: ProjectProps; index: number }) {
-  // Use index to create an asymmetrical layout effect
   const isEven = index % 2 === 0;
 
   return (
-    <Link href={`/project/${project.id}`}>
-      <motion.div
-        className={`group cursor-pointer relative ${isEven ? 'md:mt-0' : 'md:mt-32'}`}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, delay: index * 0.1, ease: [0.215, 0.61, 0.355, 1] }}
-      >
-        <div className="relative overflow-hidden rounded-2xl bg-secondary shadow-sm transition-all duration-500 group-hover:shadow-2xl">
-          <div 
-            className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10"
-            style={{ backgroundColor: project.color }}
-          />
+    <section className="py-24 md:py-48 relative overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 md:gap-24`}>
           
-          <motion.img
-            src={project.image}
-            alt={project.title}
-            className="w-full aspect-[4/5] md:aspect-[3/4] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-          />
+          {/* Large Editorial Image */}
+          <motion.div 
+            className="w-full md:w-3/5"
+            initial={{ opacity: 0, scale: 0.9, rotate: isEven ? -2 : 2 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Link href={`/project/${project.id}`}>
+              <div className="relative aspect-[16/10] overflow-hidden rounded-xl cursor-pointer shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] group">
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 z-10"
+                  style={{ backgroundColor: project.color }}
+                />
+                <motion.img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                />
+                
+                {/* Floating Category Tag */}
+                <div className="absolute top-8 left-8 z-20">
+                  <span className="px-4 py-2 bg-white/90 backdrop-blur-md text-black text-[10px] font-bold uppercase tracking-[0.2em] rounded-full shadow-sm">
+                    {project.category.split(' • ')[1]}
+                  </span>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 flex flex-col justify-end p-8">
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileHover={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              className="flex justify-between items-center text-white"
-            >
-              <div>
-                <p className="text-sm font-medium opacity-80 mb-1">{project.category}</p>
-                <h3 className="text-3xl font-display font-bold leading-tight">{project.title}</h3>
+          {/* Minimal Editorial Text */}
+          <motion.div 
+            className="w-full md:w-2/5 space-y-8"
+            initial={{ opacity: 0, x: isEven ? 50 : -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <span className="h-[1px] w-12 bg-foreground/20"></span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground">
+                  Project 0{index + 1}
+                </span>
               </div>
-              <div className="bg-white text-black p-3 rounded-full">
-                <ArrowUpRight className="w-6 h-6" />
-              </div>
-            </motion.div>
-          </div>
+              <h3 className="text-5xl md:text-7xl font-display font-medium tracking-tighter leading-none">
+                {project.title}
+              </h3>
+            </div>
+            
+            <p className="text-xl text-muted-foreground leading-relaxed font-light">
+              Crafting a seamless digital identity through thoughtful interaction and visual storytelling.
+            </p>
+
+            <Link href={`/project/${project.id}`}>
+              <a className="inline-flex items-center group/link">
+                <span className="text-sm font-bold uppercase tracking-[0.2em] border-b-2 border-foreground/10 group-hover/link:border-foreground pb-2 transition-all duration-300">
+                  Explore Case Study
+                </span>
+                <motion.div 
+                  className="ml-4 w-12 h-12 rounded-full border border-foreground/10 flex items-center justify-center group-hover/link:bg-foreground group-hover/link:text-background transition-colors duration-500"
+                  whileHover={{ x: 10 }}
+                >
+                  <ArrowRight className="w-5 h-5" />
+                </motion.div>
+              </a>
+            </Link>
+          </motion.div>
+
         </div>
-        
-        <div className="mt-6 flex justify-between items-center md:hidden">
-           <h3 className="text-xl font-display font-medium">{project.title}</h3>
-           <span className="text-sm text-muted-foreground">{project.category}</span>
-        </div>
-      </motion.div>
-    </Link>
+      </div>
+      
+      {/* Background Decorative Accent */}
+      <div 
+        className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-border/50 to-transparent z-[-1]"
+        style={{ top: `${40 + index * 10}%` }}
+      />
+    </section>
   );
 }
