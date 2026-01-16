@@ -16,7 +16,7 @@ export function Hero() {
               Parima <br />
               <span className="flex items-center gap-4">
                 <motion.span 
-                  className="h-[2px] w-[15vw] bg-foreground/10 hidden md:block"
+                  className="h-[2px] w-[15vw] bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 hidden md:block"
                   initial={{ width: 0 }}
                   animate={{ width: "15vw" }}
                   transition={{ delay: 0.5, duration: 1 }}
@@ -51,21 +51,25 @@ export function Hero() {
           transition={{ delay: 0.3, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* A large, semi-transparent circle with glassmorphism */}
-          <div className="absolute inset-0 border border-foreground/5 rounded-full backdrop-blur-[2px] bg-white/5 shadow-2xl animate-spin-slow" />
+          <div className="absolute inset-0 border border-white/20 rounded-full backdrop-blur-[2px] bg-white/5 shadow-2xl animate-spin-slow overflow-hidden">
+             {/* Inner gradient sweep */}
+             <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 via-pink-400/10 to-purple-400/10 opacity-30" />
+          </div>
           
           {/* An abstract "orb" that reacts to mouse/animation */}
           <motion.div 
-            className="absolute top-1/4 right-1/4 w-1/2 h-1/2 bg-gradient-to-br from-pink-400/20 to-orange-400/20 rounded-full blur-2xl"
+            className="absolute top-1/4 right-1/4 w-1/2 h-1/2 bg-gradient-to-br from-orange-400/40 via-pink-500/40 to-purple-600/40 rounded-full blur-3xl shadow-[0_0_100px_rgba(236,72,153,0.3)]"
             animate={{
-              scale: [1, 1.2, 1],
-              x: [0, 20, 0],
-              y: [0, -20, 0]
+              scale: [1, 1.3, 1],
+              rotate: [0, 90, 0],
+              x: [0, 30, 0],
+              y: [0, -30, 0]
             }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           />
 
           <div className="absolute inset-0 flex items-center justify-center">
-             <div className="text-[8px] font-bold uppercase tracking-[1em] text-muted-foreground rotate-90 origin-center whitespace-nowrap">
+             <div className="text-[8px] font-bold uppercase tracking-[1em] text-foreground/60 rotate-90 origin-center whitespace-nowrap">
                 Tokyo • remote • {new Date().getFullYear()}
              </div>
           </div>
@@ -74,8 +78,8 @@ export function Hero() {
       </div>
       
       {/* Background Large Text (Watermark) */}
-      <div className="absolute top-0 right-0 -z-10 select-none pointer-events-none opacity-[0.02]">
-        <span className="text-[30vw] font-display font-black leading-none uppercase tracking-tighter">
+      <div className="absolute top-0 right-0 -z-10 select-none pointer-events-none opacity-[0.03]">
+        <span className="text-[30vw] font-display font-black leading-none uppercase tracking-tighter bg-gradient-to-b from-orange-400 via-pink-500 to-purple-600 bg-clip-text text-transparent">
           UXUI
         </span>
       </div>
