@@ -8,7 +8,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="space-y-4 mb-12"
+          className="space-y-4 mb-12 text-[12px]"
         >
           <span className="text-sm font-bold tracking-widest uppercase opacity-50">Portfolio 2026</span>
           <div className="relative inline-block">
