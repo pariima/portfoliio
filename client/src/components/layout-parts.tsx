@@ -1,73 +1,45 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
 
 export function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-background/40 backdrop-blur-xl border-b border-border/10">
-      <div className="container mx-auto px-6 h-20 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 w-full z-[100] px-6 md:px-12 py-8 flex justify-between items-center pointer-events-none">
+      <div className="pointer-events-auto">
         <Link href="/">
-          <a className="text-xl font-display font-bold tracking-tight hover:opacity-70 transition-opacity">
-            Parima.
+          <a className="text-2xl font-black tracking-tighter uppercase group flex items-center gap-2">
+            <span className="bg-primary text-white px-2 py-1">P</span>
+            <span className="hidden md:inline">Parima</span>
           </a>
         </Link>
-
-        <div className="hidden md:flex items-center gap-8">
-          <Link href="/"><a className="text-sm font-medium hover:opacity-60 transition-opacity">Work</a></Link>
-          <Link href="/about"><a className="text-sm font-medium hover:opacity-60 transition-opacity">About</a></Link>
-          <a href="#" className="text-sm font-medium hover:opacity-60 transition-opacity">Resume</a>
-        </div>
-
-        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X /> : <Menu />}
-        </button>
       </div>
-
-      {isOpen && (
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="absolute top-20 left-0 w-full bg-background border-b border-border p-6 md:hidden flex flex-col gap-6"
-        >
-          <Link href="/"><a className="text-lg font-medium" onClick={() => setIsOpen(false)}>Work</a></Link>
-          <Link href="/about"><a className="text-lg font-medium" onClick={() => setIsOpen(false)}>About</a></Link>
-          <a href="#" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Resume</a>
-        </motion.div>
-      )}
+      
+      <div className="flex gap-8 pointer-events-auto bg-white/80 backdrop-blur-md px-6 py-3 border-2 border-primary rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <Link href="/projects"><a className="text-[10px] font-black uppercase tracking-widest hover:text-primary transition-colors">Projects</a></Link>
+        <Link href="/about"><a className="text-[10px] font-black uppercase tracking-widest hover:text-primary transition-colors">About</a></Link>
+        <Link href="/contact"><a className="text-[10px] font-black uppercase tracking-widest hover:text-primary transition-colors">Contact</a></Link>
+      </div>
     </nav>
   );
 }
 
 export function Footer() {
   return (
-    <footer className="py-24 border-t border-border/20 mt-20 relative z-10">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-12">
-          <div className="space-y-4 max-w-md">
-            <h3 className="text-4xl font-display font-bold tracking-tighter">Let's build something together.</h3>
-            <p className="text-muted-foreground text-lg">
-              Currently open for new opportunities.
-              <br />
-              <a href="mailto:hello@parima.design" className="text-foreground font-medium hover:underline transition-all">hello@parima.design</a>
-            </p>
-          </div>
-          
-          <div className="flex gap-12">
-            <div className="flex flex-col gap-4">
-              <span className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">Socials</span>
-              <a href="#" className="text-sm hover:opacity-60 transition-opacity">LinkedIn</a>
-              <a href="#" className="text-sm hover:opacity-60 transition-opacity">Read.cv</a>
-              <a href="#" className="text-sm hover:opacity-60 transition-opacity">Dribbble</a>
-            </div>
+    <footer className="bg-primary text-white py-24 px-6 md:px-12 border-t-2 border-primary">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end gap-12">
+        <div className="space-y-8">
+          <h2 className="text-6xl md:text-8xl font-display font-black uppercase tracking-tighter leading-none">
+            Let's <br /> Talk
+          </h2>
+          <div className="flex gap-4">
+            <a href="#" className="w-12 h-12 border-2 border-white flex items-center justify-center font-bold hover:bg-white hover:text-primary transition-all">TW</a>
+            <a href="#" className="w-12 h-12 border-2 border-white flex items-center justify-center font-bold hover:bg-white hover:text-primary transition-all">LI</a>
+            <a href="#" className="w-12 h-12 border-2 border-white flex items-center justify-center font-bold hover:bg-white hover:text-primary transition-all">IG</a>
           </div>
         </div>
         
-        <div className="mt-20 pt-8 border-t border-border/10 flex justify-between text-[10px] uppercase tracking-widest text-muted-foreground font-bold">
-          <span>© 2026 Parima Bajracharya</span>
-          <span>Tokyo / Remote</span>
+        <div className="text-right space-y-4">
+          <p className="text-xs font-bold uppercase tracking-widest opacity-60">© 2026 Parima Bajracharya</p>
+          <p className="text-sm font-medium italic underline underline-offset-8 decoration-white/30 hover:decoration-white transition-all cursor-pointer">Back to top ↑</p>
         </div>
       </div>
     </footer>
