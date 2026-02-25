@@ -13,9 +13,9 @@ export function Hero() {
           <span className="text-sm font-bold tracking-widest uppercase opacity-50">Portfolio 2026</span>
           <div className="relative inline-block">
              <h1 className="text-6xl md:text-[10vw] font-display font-black leading-none uppercase tracking-tighter text-primary">
-                Product <br />
+                Parima <br />
                 <span className="relative">
-                  Design
+                  UX Designer
                   <svg className="absolute -bottom-2 left-0 w-full h-4 text-primary/30" viewBox="0 0 100 10" preserveAspectRatio="none">
                     <path d="M0 5 Q 25 0, 50 5 T 100 5" fill="none" stroke="currentColor" strokeWidth="2" />
                   </svg>

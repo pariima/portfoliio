@@ -1,0 +1,34 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "client/public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "settings"
+    label: "Settings"
+    files:
+      - label: "Hero Section"
+        name: "hero"
+        file: "content/settings/hero.json"
+        fields:
+          - { label: "Portfolio Year", name: "portfolioYear", widget: "string" }
+          - { label: "Main Heading Line 1", name: "headingLine1", widget: "string" }
+          - { label: "Main Heading Line 2", name: "headingLine2", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Location", name: "location", widget: "string" }
+          - { label: "Available for Work", name: "availableForWork", widget: "boolean" }
