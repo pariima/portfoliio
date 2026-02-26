@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 py-20 bg-white border-b-2 border-primary">
+    <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 py-20 pt-32 bg-white border-b-2 border-primary">
       <div className="max-w-7xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -12,7 +12,7 @@ export function Hero() {
         >
           <span className="text-sm font-bold tracking-widest uppercase opacity-50">Portfolio 2026</span>
           <div className="relative inline-block">
-             <h1 className="text-6xl md:text-[10vw] font-display font-black leading-none uppercase tracking-tighter text-primary">
+             <h1 className="text-5xl md:text-[8vw] font-display font-black leading-none uppercase tracking-tighter text-primary">
                 Parima <br />
                 <span className="relative">
                   UX Designer
