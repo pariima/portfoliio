@@ -15,93 +15,127 @@ export default function ProjectDetail() {
     <Layout>
       <CustomCursor />
       
-      {/* Hero Header */}
-      <section className="container mx-auto px-6 mb-20">
+      {/* Hero Image */}
+      <motion.section 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="w-full mb-12 pt-24"
+      >
+        <div className="w-full aspect-[16/9] bg-muted overflow-hidden">
+          <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+        </div>
+      </motion.section>
+
+      {/* Title & Description */}
+      <section className="max-w-5xl mx-auto px-6 md:px-12 mb-16">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-4xl"
+          transition={{ delay: 0.2 }}
         >
-          <span className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4 block">
-            {project.category}
-          </span>
-          <h1 className="text-5xl md:text-7xl font-display font-medium mb-8">
+          <h1 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tight mb-6">
             {project.title}
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+          <p className="text-lg md:text-xl leading-relaxed">
             {project.description}
           </p>
         </motion.div>
       </section>
 
-      {/* Hero Image */}
-      <motion.section 
-        initial={{ opacity: 0, scale: 0.98 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.2, duration: 0.8 }}
-        className="container mx-auto px-6 mb-32"
-      >
-        <div className="aspect-video w-full bg-secondary rounded-xl overflow-hidden shadow-2xl">
-          <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-        </div>
-      </motion.section>
-
-      {/* Project Details Grid */}
-      <section className="container mx-auto px-6 mb-32">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-y border-border py-12">
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Role</h3>
-            <p className="text-lg">{project.role}</p>
+      {/* Metadata Grid */}
+      <section className="max-w-5xl mx-auto px-6 md:px-12 mb-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6"
+        >
+          <div className="border-2 border-primary p-6">
+            <h3 className="text-xs font-black uppercase tracking-widest mb-3 opacity-50">Role</h3>
+            <p className="text-sm font-medium">{project.role}</p>
           </div>
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Timeline</h3>
-            <p className="text-lg">{project.timeline}</p>
+          <div className="border-2 border-primary p-6">
+            <h3 className="text-xs font-black uppercase tracking-widest mb-3 opacity-50">Tools/Skills</h3>
+            <p className="text-sm font-medium">{project.tools.join(", ")}</p>
           </div>
-          <div className="col-span-1 md:col-span-2">
-             <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Tools</h3>
-             <div className="flex flex-wrap gap-2">
-               {project.tools.map(tool => (
-                 <span key={tool} className="px-3 py-1 bg-secondary rounded-full text-sm">
-                   {tool}
-                 </span>
-               ))}
-             </div>
+          <div className="border-2 border-primary p-6">
+            <h3 className="text-xs font-black uppercase tracking-widest mb-3 opacity-50">Team</h3>
+            <p className="text-sm font-medium">Solo Designer</p>
           </div>
-        </div>
+          <div className="border-2 border-primary p-6">
+            <h3 className="text-xs font-black uppercase tracking-widest mb-3 opacity-50">Duration</h3>
+            <p className="text-sm font-medium">{project.timeline}</p>
+          </div>
+        </motion.div>
       </section>
 
-      {/* Case Study Content */}
-      <section className="container mx-auto px-6 max-w-4xl space-y-32 mb-32">
+      {/* Content Sections */}
+      <section className="max-w-5xl mx-auto px-6 md:px-12 space-y-20 mb-32">
         
-        {/* The Challenge */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <h2 className="text-2xl font-display font-bold">The Challenge</h2>
-          <div className="md:col-span-2">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {project.challenge}
-            </p>
+        {/* Background */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <h2 className="text-xs font-black uppercase tracking-widest mb-6 opacity-50">BACKGROUND</h2>
+          <p className="text-base leading-relaxed mb-8">
+            {project.challenge}
+          </p>
+        </motion.div>
+
+        {/* Goals Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="bg-muted/30 border-2 border-primary p-8 md:p-12"
+        >
+          <h2 className="text-xs font-black uppercase tracking-widest mb-6 opacity-50">GOALS</h2>
+          <ul className="space-y-3 text-base">
+            <li>• Simplify user management workflows</li>
+            <li>• Create seamless progress tracking</li>
+            <li>• Improve navigation and findability</li>
+            <li>• Reduce administrative overhead</li>
+          </ul>
+        </motion.div>
+
+        {/* Process Visuals */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+        >
+          <h2 className="text-xs font-black uppercase tracking-widest mb-6 opacity-50">DESIGN PROCESS</h2>
+          <div className="border-2 border-primary aspect-video bg-muted flex items-center justify-center">
+            <p className="text-sm font-medium opacity-50">Wireframes & User Flows</p>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Process Placeholders (Visuals) */}
-        <div className="bg-secondary/50 rounded-lg p-12 aspect-[2/1] flex items-center justify-center border border-border">
-          <p className="text-muted-foreground italic">Wireframes & User Flows Visualization</p>
-        </div>
+        {/* Outcome */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+        >
+          <h2 className="text-xs font-black uppercase tracking-widest mb-6 opacity-50">OUTCOME</h2>
+          <p className="text-base leading-relaxed">
+            {project.outcome}
+          </p>
+        </motion.div>
 
-        {/* The Outcome */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <h2 className="text-2xl font-display font-bold">The Outcome</h2>
-          <div className="md:col-span-2">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {project.outcome}
-            </p>
+        {/* Final Solution */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+        >
+          <h2 className="text-xs font-black uppercase tracking-widest mb-6 opacity-50">FINAL SOLUTION</h2>
+          <div className="border-2 border-primary aspect-video bg-muted flex items-center justify-center mb-6">
+            <p className="text-sm font-medium opacity-50">High-Fidelity Prototype</p>
           </div>
-        </div>
-
-        {/* Final Mockup Placeholder */}
-        <div className="bg-secondary/50 rounded-lg p-12 aspect-video flex items-center justify-center border border-border">
-          <p className="text-muted-foreground italic">Interactive High-Fidelity Prototype</p>
-        </div>
+        </motion.div>
 
       </section>
 
